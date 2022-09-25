@@ -10,7 +10,7 @@ class CrudOperations {
         try {
             return await this.model.create(obj);
         } catch (e) {
-            console.error(`Error in creating data`, this.model.name);
+            console.error(`somthing wrong with create operation`, this.model.name);
         }
     }
 
@@ -23,7 +23,7 @@ class CrudOperations {
                 return await this.model.findAll()
             }
         } catch (e) {
-            console.error(`Error in reading data`, this.model.name);
+            console.error(`somthing wrong with get item(s) operation`, this.model.name);
         }
 
     }
@@ -32,7 +32,7 @@ class CrudOperations {
         try {
             return await this.model.update(obj, { where: { id } });
         } catch (e) {
-            console.error(`Error in updating data`, this.model.name);
+            console.error(`somthing wrong with update operation`, this.model.name);
         }
     }
 
@@ -40,7 +40,7 @@ class CrudOperations {
         try {
             return await this.model.destroy({ where: { id } });
         } catch (e) {
-            console.error(`Error in deleting data`, this.model.name);
+            console.error(`somthing wrong with delete operation`, this.model.name);
         }
     }
 

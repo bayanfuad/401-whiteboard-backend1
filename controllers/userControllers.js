@@ -35,6 +35,15 @@ async function getAllUsers(req, res) {
 }
 
 
+
+
+
+
+
+
+
+
+
 module.exports = {
     signup,
     getAllUsers,
