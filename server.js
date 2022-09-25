@@ -16,7 +16,7 @@ app.use(usersRouters);
 app.use(postsRouters);
 
 function handleMain(req,res) {
-    res.status(200).send('at the main page')
+    res.status(200).send('Hello from the home page')
 }
 function start(port) {
     app.listen(port, () => console.log(`Server is up and running at ${port}`));
