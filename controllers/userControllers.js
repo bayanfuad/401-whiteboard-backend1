@@ -6,11 +6,12 @@ const { usersModel } = require('../models/index');
 
 async function signup(req, res) {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password,role } = req.body;
         const hashedData = {
             userName: username,
             email: email,
-            passWord: await bcrypt.hash(password, 10)
+            passWord: await bcrypt.hash(password, 10),
+            role
         }
         const user = await usersModel.create(hashedData);
         res.status(201).send(user);
