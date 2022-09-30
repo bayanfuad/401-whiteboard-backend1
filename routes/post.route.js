@@ -4,12 +4,13 @@ const express = require("express");
 const { posts, postsModel, commentModel } = require("../models");
 const { bearerAuth } = require("../middlewares/bearerAuth");
 const router = express.Router();
+const { acl } = require('../middlewares/AccessControlList');
 
-router.post("/post", bearerAuth, addPost);
-router.get("/post", bearerAuth, getAllPosts);
-router.get("/post/:id", bearerAuth, gitOnePost);
-router.put("/post/:id", bearerAuth, updatePost);
-router.delete("/post/:id", bearerAuth, deletePost);
+router.post("/post", bearerAuth, acl('create'),addPost);
+router.get("/post", bearerAuth, acl('read'), getAllPosts);
+router.get("/post/:id", bearerAuth,acl('read'), gitOnePost);
+router.put("/post/:id", bearerAuth, acl('update'),updatePost);
+router.delete("/post/:id", bearerAuth,acl('delete'), deletePost);
 
 async function addPost(req, res) {
   res.status(201).send(await posts.addOn(req.body));

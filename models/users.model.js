@@ -20,6 +20,19 @@ function createUsersTable(sequelize, dataTypes) {
             token : {
                 type:dataTypes.VIRTUAL
             },
+            role: {
+                type: dataTypes.ENUM('user', 'admin'), defaultValue: 'user', allowNull: false
+            },
+            capabilites: {
+                type: dataTypes.VIRTUAL,
+                get() {
+                    const actions = {
+                        user: ['read', 'create'],
+                        admin: ['read', 'create', 'update', 'delete']
+                    }
+                    return (actions[this.role]);
+                }
+            }
         })
     );
 }
